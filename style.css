@@ -19,15 +19,25 @@
 
 .NEO {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     width: 500px;
     height: 500px;
     background-color: grey;
     border-radius: 20px;
 }
 
-button {
-    width: 100px;
+.APOD {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    background-color: grey;
+    border-radius: 20px;
+}
+
+#displayNEOs, #displayAPOD {
+    width: 500px;
     height: 100px;
+    margin-top: 50vh;
     border-radius: 10px;
 }

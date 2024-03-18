@@ -12,6 +12,12 @@ async function fetchNeo() {
     return data;
 }
 
+async function fetchAPOD() {
+    const response = await fetch(apodUrl);
+    const data = await response.json();
+    return data;
+}
+
 function displayNeo(data) {
     // TODO: ge bättre namn på variabler / dela upp i funktioner för att kunna läsa enklre
     console.log(data);
@@ -43,10 +49,21 @@ function displayNeo(data) {
     });
 }
 
+function displayApod(data) {
+    console.log(data);
+    const url = data.hdurl;
+    console.log(url);
+}
+
 // const NEO = await fetchNeo();
 // displayNeo(NEO);
 
 neoButton.onclick = async function() {
     const NEO = await fetchNeo();
     displayNeo(NEO);
+}
+
+window.onload = async function() {
+    const APOD = await fetchAPOD();
+    displayApod(APOD)
 }
