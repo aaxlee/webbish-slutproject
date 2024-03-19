@@ -1,6 +1,11 @@
 const neoButton = document.getElementById("displayNEOs");
+const apodButton = document.getElementById("displayAPOD");
+
 const apiKey = "vfr5FTFGczcXErWDkr0Se9HCgiWwoABSdeFpTDG8";
+
 let result = document.getElementById("result");
+let res = document.getElementById("res");
+
 // NEO (Near Earth Objects)
 const neoUrl = `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${apiKey}`;
 // APOD (Astronomy Picture Of The Day)
@@ -50,20 +55,19 @@ function displayNeo(data) {
 }
 
 function displayApod(data) {
-    console.log(data);
     const url = data.hdurl;
     console.log(url);
+    const img = document.createElement("img");
+    img.src = url;
+    res.appendChild(img);
 }
-
-// const NEO = await fetchNeo();
-// displayNeo(NEO);
 
 neoButton.onclick = async function() {
     const NEO = await fetchNeo();
     displayNeo(NEO);
 }
 
-window.onload = async function() {
+apodButton.onclick = async function() {
     const APOD = await fetchAPOD();
-    displayApod(APOD)
+    displayApod(APOD);
 }
