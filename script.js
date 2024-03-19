@@ -1,11 +1,15 @@
 const neoButton = document.getElementById("displayNEOs");
 const apodButton = document.getElementById("displayAPOD");
 
-const apiKey = "vfr5FTFGczcXErWDkr0Se9HCgiWwoABSdeFpTDG8";
-
 let result = document.getElementById("result");
 let res = document.getElementById("res");
 
+let apodWindow = document.getElementById("pop-up-APOD");
+let neoWindow = document.getElementById("pop-up-NEO");
+let closeApod = document.getElementById("close-APOD");
+let closeNeo = document.getElementById("close-NEO");
+
+const apiKey = "vfr5FTFGczcXErWDkr0Se9HCgiWwoABSdeFpTDG8";
 // NEO (Near Earth Objects)
 const neoUrl = `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${apiKey}`;
 // APOD (Astronomy Picture Of The Day)
@@ -62,12 +66,28 @@ function displayApod(data) {
     res.appendChild(img);
 }
 
-neoButton.onclick = async function() {
-    const NEO = await fetchNeo();
-    displayNeo(NEO);
-}
+apodButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    apodWindow.style.display = "block";
+});
+closeApod.addEventListener("click", function(e) {
+    apodWindow.style.display = "none";
+});
 
-apodButton.onclick = async function() {
-    const APOD = await fetchAPOD();
-    displayApod(APOD);
-}
+neoButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    neoWindow.style.display = "block";
+});
+closeNeo.addEventListener("click", function(e) {
+    neoWindow.style.display = "none";
+});
+
+// neoButton.onclick = async function() {
+//     const NEO = await fetchNeo();
+//     displayNeo(NEO);
+// }
+
+// apodButton.onclick = async function() {
+//     const APOD = await fetchAPOD();
+//     displayApod(APOD);
+// }
