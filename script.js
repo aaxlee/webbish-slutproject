@@ -1,5 +1,6 @@
 const neoButton = document.getElementById("buttonNEO");
 const apodButton = document.getElementById("buttonAPOD");
+const icon = document.getElelentById("icon");
 
 let result = document.getElementById("result");
 let res = document.getElementById("res");
@@ -66,8 +67,10 @@ function displayApod(data) {
     res.appendChild(img);
 }
 
+icon.addEventListener("click", function(e) {
+    e.preventDefault();
+})
 // tutorial för pop-up fönster: https://www.linkedin.com/advice/3/how-can-you-create-pop-up-window-html-javascript-skills-html
-
 apodButton.addEventListener("click", function(e) {
     e.preventDefault();
     apodWindow.style.display = "block";
