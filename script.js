@@ -16,19 +16,13 @@ const neoUrl = `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${apiKey}`;
 // APOD (Astronomy Picture Of The Day)
 const apodUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`; 
 
-async function fetchNeo() {
-    const response = await fetch(neoUrl);
+async function fetchData(url) {
+    const response = await fetch(url);
     const data = await response.json();
     return data;
 }
 
-async function fetchAPOD() {
-    const response = await fetch(apodUrl);
-    const data = await response.json();
-    return data;
-}
-
-function displayNeo(data) {
+function displayNEO(data) {
     // TODO: ge bättre namn på variabler / dela upp i funktioner för att kunna läsa enklre
     console.log(data);
     let neoObjects = data.near_earth_objects;
@@ -59,7 +53,7 @@ function displayNeo(data) {
     });
 }
 
-function displayApod(data) {
+function displayAPOD(data) {
     const url = data.hdurl;
     console.log(url);
     const img = document.createElement("img");
@@ -86,12 +80,12 @@ closeNeo.addEventListener("click", function(e) {
     neoWindow.style.display = "none";
 });
 
-// neoButton.onclick = async function() {
-//     const NEO = await fetchNeo();
-//     displayNeo(NEO);
-// }
+neoButton.onclick = async function() {
+    const NEO = await fetchData(neoUrl);
+    displayNEO(NEO);
+}
 
-// apodButton.onclick = async function() {
-//     const APOD = await fetchAPOD();
-//     displayApod(APOD);
-// }
+apodButton.onclick = async function() {
+    const APOD = await fetchData(apodUrl);
+    displayAPOD(APOD);
+}
