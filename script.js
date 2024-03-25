@@ -1,6 +1,6 @@
 const neoButton = document.getElementById("buttonNEO");
 const apodButton = document.getElementById("buttonAPOD");
-const icon = document.getElelentById("icon");
+const icon = document.getElementById("icon");
 
 let result = document.getElementById("result");
 let res = document.getElementById("res");
